@@ -3,7 +3,7 @@ Project Group 1\
 Group Members: Katie Anders, Kris Bowen, Ashwin John, Thao Nguyen, and Nick Tallent.\
 \
 
-## Scope of the Project
+## Introduction
 In this project, a database regarding Food Delivery on Campus is provided to us. Understand a test database for a campus-controlled food delivery service similar to craveoncampus.com. Based on this database, we are going to generate rating tables for restaurants and drivers. Our rating tables will be sorted by high to low rating or low to high rating (5 is the highest and 1 is the lowest). Additionally, there will be two views that uses join, Query Optimization, and a description of the types of users and their roles.
 
 ## Use Case for Rating System
@@ -25,3 +25,12 @@ In this project, a database regarding Food Delivery on Campus is provided to us.
 ![EERD_Campus_Eats_Team1_Spring2021](https://user-images.githubusercontent.com/71344519/113466686-b066a480-940b-11eb-949f-776adff95178.png)
 
 ## Data Dictionary
+<img width="1426" alt="Table1" src="https://user-images.githubusercontent.com/71344519/113466859-02f49080-940d-11eb-922c-b6be5d67e105.png">
+
+<img width="1427" alt="Table2" src="https://user-images.githubusercontent.com/71344519/113466863-10117f80-940d-11eb-88a2-64a805f35f53.png">
+<img width="1426" alt="Table3" src="https://user-images.githubusercontent.com/71344519/113466869-16076080-940d-11eb-9ee4-2768907ba0ef.png">
+<img width="1429" alt="Table4" src="https://user-images.githubusercontent.com/71344519/113466872-1acc1480-940d-11eb-97fd-9403d260fb76.png">
+<img width="1427" alt="Table5" src="https://user-images.githubusercontent.com/71344519/113466873-1f90c880-940d-11eb-8686-b975b73aa3ea.png">
+
+
+
