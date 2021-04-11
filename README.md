@@ -32,5 +32,16 @@ In this project, a database regarding Food Delivery on Campus is provided to us.
 <img width="1429" alt="Table4" src="https://user-images.githubusercontent.com/71344519/113466872-1acc1480-940d-11eb-97fd-9403d260fb76.png">
 <img width="1427" alt="Table5" src="https://user-images.githubusercontent.com/71344519/113466873-1f90c880-940d-11eb-8686-b975b73aa3ea.png">
 
+## Screenshots showing relationships of rating tables
+<img width="1440" alt="restaurant_ratings(ScreenShot)" src="https://user-images.githubusercontent.com/71344519/114292152-7ffdb680-9a5a-11eb-9703-8b44d4788e74.png">
+
+<img width="1437" alt="driver_rating(ScreenShot)" src="https://user-images.githubusercontent.com/71344519/114292160-8a1fb500-9a5a-11eb-88ae-a8ed71a7bb20.png">
+
+<img width="1432" alt="rating(ScreenShot)" src="https://user-images.githubusercontent.com/71344519/114292168-9277f000-9a5a-11eb-81cb-dea9f43bbef5.png">
+
+<img width="1433" alt="order(ScreenShot)" src="https://user-images.githubusercontent.com/71344519/114292174-97d53a80-9a5a-11eb-8a30-dec98a121057.png">
+
+
+
 
 
