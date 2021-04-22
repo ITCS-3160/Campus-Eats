@@ -39,13 +39,13 @@ In this project, a database regarding Food Delivery on Campus is provided to us.
 
 <img width="1432" alt="rating(ScreenShot)" src="https://user-images.githubusercontent.com/71344519/114292168-9277f000-9a5a-11eb-81cb-dea9f43bbef5.png">
 
-<img width="1440" alt="orders(ScreenShot)" src="https://user-images.githubusercontent.com/71344519/115770711-09768800-a37b-11eb-9f57-8ff5d0d40bd5.png">
+<img width="1435" alt="orders(ScreenShot)" src="https://user-images.githubusercontent.com/71344519/115776460-1fd41200-a382-11eb-81fa-d11728dfd582.png">
+
 
 ## Create Stored Procedure to calculate Average Rating
-<img width="1440" alt="StoredProcedure_Avg_1" src="https://user-images.githubusercontent.com/71344519/115770941-53f80480-a37b-11eb-98d9-a8e01068281f.png">
+<img width="1440" alt="StoredProcedure_Avg_1" src="https://user-images.githubusercontent.com/71344519/115776399-1185f600-a382-11eb-89b2-6993fec97b62.png">
 
-<img width="1440" alt="StoredProcedure_Avg_2" src="https://user-images.githubusercontent.com/71344519/115770956-59ede580-a37b-11eb-8c31-f5e5a54e0298.png">
-
+<img width="1440" alt="StoredProcedure_Avg_2" src="https://user-images.githubusercontent.com/71344519/115776431-19459a80-a382-11eb-9a3d-71558a4174e2.png">
 
 
 
