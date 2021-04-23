@@ -47,5 +47,8 @@ In this project, a database regarding Food Delivery on Campus is provided to us.
 
 <img width="1440" alt="StoredProcedure_Avg_2" src="https://user-images.githubusercontent.com/71344519/115776431-19459a80-a382-11eb-9a3d-71558a4174e2.png">
 
+## Screenshots showing Advanced Views
 
+<img width="1440" alt="AdvancedView1" src="https://raw.githubusercontent.com/ITCS-3160/Campus-Eats/main/ScreenShots/AdvancedView1.png">
+<img width="1440" alt="AdvancedView2" src="https://raw.githubusercontent.com/ITCS-3160/Campus-Eats/main/ScreenShots/AdvancedView2.png">
 
