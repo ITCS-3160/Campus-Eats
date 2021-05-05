@@ -52,3 +52,14 @@ In this project, a database regarding Food Delivery on Campus is provided to us.
 <img width="1440" alt="AdvancedView1" src="https://raw.githubusercontent.com/ITCS-3160/Campus-Eats/main/ScreenShots/AdvancedView1.png">
 <img width="1440" alt="AdvancedView2" src="https://raw.githubusercontent.com/ITCS-3160/Campus-Eats/main/ScreenShots/AdvancedView2.png">
 
+## Explain statements
+EXPLAIN is a command for MySql that shows how the system executes a query. It tells you what is being executed and the order it is being executed in.
+
+Explain statement for first advanced view. In this query the output shows that the driver_rating table is being used. The ALL under type shows that it is scanning the entire table. The extra column gives some tips on statements that can be used to optimize the query.
+<img width="1440" alt="AdvancedView2" src="https://raw.githubusercontent.com/ITCS-3160/Campus-Eats/main/ScreenShots/AV1_Explain.png">
+
+Explain statement for second advanced view. The output explains that the system is looking at the restuarant_ratings and rating tables. The eq_ref under type shows that it is using an index to access the table. The index in question is the primary key. The primary key is 4 characters in length. The ref statement means that the system is comparing the rating_id of the restuarant_ratings table to the index. 
+<img width="1440" alt="AdvancedView2" src="https://raw.githubusercontent.com/ITCS-3160/Campus-Eats/main/ScreenShots/AV2_Explain.png">
+
+## Indexes
+Indexes are a way to improve query speed. Indexes can point to many things such as Primary Keys and Unique Keys. Indexes keep track of whatever is specified and has a reference pointing there. This helps the optimization of the database because it prevents the database from having to scan the entire table row by row. Instead, the database can look at the index to know where to go. This vastly improves the speed of the query on a large table and is very important.
