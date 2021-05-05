@@ -1,10 +1,16 @@
-CREATE DATABASE  IF NOT EXISTS `Campus_Eats_Fall2020` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `Campus_Eats_Fall2020`;
--- MySQL dump 10.13  Distrib 8.0.19, for macos10.15 (x86_64)
+Drop database Campus_Eats_Fall2020;
+Create database Campus_Eats_Fall2020;
+Use Campus_Eats_Fall2020;
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: localhost    Database: Campus_Eats_Fall2020
+-- Host: 127.0.0.1    Database: niner_eats
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.18
+-- created by "mavericks" team:  
+-- Dhananjay Arora, Akshay Babu, Sumit Kawale, Prashant Madaan
+-- this database is only to be used for educational and class
+-- purposes and can not be replicated or used for commercial purposes
+-- or private interests without permission by the Mavericks team
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,9 +31,9 @@ DROP TABLE IF EXISTS `delivery`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `delivery` (
-  `delivery_id` int NOT NULL AUTO_INCREMENT,
-  `driver_id` int NOT NULL,
-  `vehicle_id` int NOT NULL,
+  `delivery_id` int(11) NOT NULL AUTO_INCREMENT,
+  `driver_id` int(11) NOT NULL,
+  `vehicle_id` int(11) NOT NULL,
   `delivery_time` datetime DEFAULT NULL,
   PRIMARY KEY (`delivery_id`),
   KEY `fk_delivery_driver_id` (`driver_id`),
@@ -55,8 +61,8 @@ DROP TABLE IF EXISTS `driver`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `driver` (
-  `driver_id` int NOT NULL AUTO_INCREMENT,
-  `student_id` int NOT NULL,
+  `driver_id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_id` int(11) NOT NULL,
   `license_number` varchar(75) DEFAULT NULL,
   `date_hired` date DEFAULT NULL,
   `rating` float DEFAULT NULL,
@@ -84,8 +90,8 @@ DROP TABLE IF EXISTS `faculty`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `faculty` (
-  `faculty_id` int NOT NULL AUTO_INCREMENT,
-  `person_id` int NOT NULL,
+  `faculty_id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) NOT NULL,
   `title` varchar(75) DEFAULT NULL,
   `degree_college` varchar(75) DEFAULT NULL,
   `highest_degree` varchar(75) DEFAULT NULL,
@@ -113,7 +119,7 @@ DROP TABLE IF EXISTS `location`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `location` (
-  `location_id` int NOT NULL AUTO_INCREMENT,
+  `location_id` int(11) NOT NULL AUTO_INCREMENT,
   `location_name` varchar(75) DEFAULT NULL,
   `location_address` varchar(75) DEFAULT NULL,
   `latitude` varchar(75) DEFAULT NULL,
@@ -135,45 +141,6 @@ INSERT INTO `location` VALUES (1,'Suite 157','69612 Will Ferry\nEwellfort, KS 63
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `order`
---
-
-DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order` (
-  `order_id` int NOT NULL AUTO_INCREMENT,
-  `person_id` int NOT NULL,
-  `delivery_id` int NOT NULL,
-  `location_id` int NOT NULL,
-  `driver_id` int NOT NULL,
-  `restaurant_id` int NOT NULL,
-  `total_price` float NOT NULL,
-  `delivery_charge` float DEFAULT NULL,
-  PRIMARY KEY (`order_id`),
-  KEY `fk_O_person_id` (`person_id`),
-  KEY `fk_O_delivery_id` (`delivery_id`),
-  KEY `fk_O_location_id` (`location_id`),
-  KEY `fk_O_driver_id` (`driver_id`),
-  KEY `fk_O_restaurant_id` (`restaurant_id`),
-  CONSTRAINT `fk_O_delivery_id` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`),
-  CONSTRAINT `fk_O_driver_id` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`),
-  CONSTRAINT `fk_O_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`),
-  CONSTRAINT `fk_O_person_id` FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`),
-  CONSTRAINT `fk_O_restaurant_id` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`restaurant_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order`
---
-
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,1,1,1,1,1,15.63,6.63),(2,2,2,2,2,2,18.03,9.43),(3,3,3,3,3,3,11.91,7.42),(4,4,4,4,4,4,19.13,6.26),(5,5,5,5,5,5,13.76,6.24),(6,6,6,6,6,6,5.4,4.83),(7,7,7,7,7,7,14.05,8.57),(8,8,8,8,8,8,3.81,2.38),(9,9,9,9,1,9,17.1,6.72),(10,10,10,10,2,10,12.71,1.82),(11,11,11,11,3,11,3.9,7.26),(12,12,12,12,4,12,6.82,7.4),(13,13,13,13,5,13,4.73,7.43),(14,14,14,14,6,14,12.08,1.21),(15,15,15,15,7,15,3.83,4.77),(16,16,16,16,8,16,12.43,2.76),(17,17,17,17,1,17,6.61,4.85),(18,18,18,18,2,18,7.89,5.69),(19,19,19,19,3,19,16.54,4.88),(20,20,20,20,4,20,3.21,4.98),(21,21,21,21,5,21,5.19,4.17),(22,22,22,22,6,22,19,1.39),(23,23,23,23,7,23,14.5,3.28),(24,24,24,24,8,24,11.81,2.71),(25,25,25,25,1,25,6.83,4.85),(26,26,26,26,2,26,7.24,5.65),(27,27,27,27,3,27,10.56,1.73),(28,28,28,28,4,28,4.25,4.98),(29,29,29,29,5,29,6.68,8.66),(30,30,30,30,6,30,14.5,6.47),(31,31,31,31,7,31,14.92,9.53),(32,32,32,32,8,32,4.12,9.42),(33,33,33,33,1,33,7.02,7.99),(34,34,34,34,2,34,8.6,6.69),(35,35,35,35,3,35,8.98,4.72),(36,36,36,36,4,36,7.94,4.78),(37,37,37,37,5,37,14.8,2.13),(38,38,38,38,6,38,19.05,6.61),(39,39,39,39,7,39,12.49,5.97),(40,40,40,40,8,40,15.56,6.01),(41,41,41,41,1,41,8.85,7.06),(42,42,42,42,2,42,12.28,5.52),(43,43,43,43,3,43,9.28,9.63),(44,44,44,44,4,44,9.78,8),(45,45,45,45,5,45,12.43,5.11),(46,46,46,46,6,46,4.11,9.65),(47,47,47,47,7,47,14.29,6.65),(48,48,48,48,8,48,5.69,3.31),(49,49,49,49,1,49,12.52,6.38),(50,50,50,50,2,50,8.84,9.92),(51,51,51,51,3,51,5.69,1.5),(52,52,52,52,4,52,14.53,4.58),(53,53,53,53,5,53,10.23,3.61),(54,54,54,54,6,54,10.7,7.36),(55,55,55,55,7,55,14.03,8.66),(56,56,56,56,8,56,13.46,1.26),(57,57,57,57,1,57,13.98,8.85),(58,58,58,58,2,58,15.21,6.59),(59,59,59,59,3,59,4.6,8.25),(60,60,60,60,4,60,3.27,6.39),(61,61,61,61,5,61,9.39,2.63),(62,62,62,62,6,62,3.7,2.47),(63,63,63,63,7,63,18.49,7.01),(64,64,64,64,8,64,15.51,8.26),(65,65,65,65,1,65,6.8,9.41),(66,66,66,66,2,66,12.57,1.88),(67,67,67,67,3,67,8.69,6.21),(68,68,68,68,4,68,9.38,9.56),(69,69,69,69,5,69,18.23,3.89),(70,70,70,70,6,70,13.39,9.65),(71,71,71,71,7,71,17.71,3.01),(72,72,72,72,8,72,10.59,2.03),(73,73,73,73,1,73,6.99,9.8),(74,74,74,74,2,74,14.14,3.98),(75,75,75,75,3,75,16.73,7.27),(76,76,76,76,4,76,6.64,5.09),(77,77,77,77,5,77,16.48,1.15),(78,78,78,78,6,78,18.61,6.49),(79,79,79,79,7,79,18.66,8.19),(80,80,80,80,8,80,7.6,9.54),(81,81,81,81,1,81,16.72,4.05),(82,82,82,82,2,82,5.64,7.18),(83,83,83,83,3,83,7.39,9.14),(84,84,84,84,4,84,11.61,1.57),(85,85,85,85,5,85,16.74,8.84),(86,86,86,86,6,86,19.88,2.43),(87,87,87,87,7,87,7.52,4.32),(88,88,88,88,8,88,14.63,4.4),(89,89,89,89,1,89,19.45,9.89),(90,90,90,90,2,90,12.5,8.23),(91,91,91,91,3,91,10.34,3.69),(92,92,92,92,4,92,11.34,6.34),(93,93,93,93,5,93,15.05,8.26),(94,94,94,94,6,94,7.89,7.05),(95,95,95,95,7,95,16.69,9.19),(96,96,96,96,8,96,5.71,8.39),(97,97,97,97,1,97,16.9,9.15),(98,98,98,98,2,98,15.63,8.92),(99,99,99,99,3,99,3.71,2.53),(100,100,100,100,4,100,5.08,2.74),(101,1,2,3,4,5,6,1);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `person`
@@ -183,10 +150,10 @@ DROP TABLE IF EXISTS `person`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `person` (
-  `person_id` int NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) NOT NULL AUTO_INCREMENT,
   `person_name` varchar(300) DEFAULT NULL,
   `person_email` varchar(150) DEFAULT NULL,
-  `cell` bigint DEFAULT NULL,
+  `cell` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`person_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -240,7 +207,7 @@ DROP TABLE IF EXISTS `restaurant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `restaurant` (
-  `restaurant_id` int NOT NULL AUTO_INCREMENT,
+  `restaurant_id` int(11) NOT NULL AUTO_INCREMENT,
   `location` varchar(75) DEFAULT NULL,
   `restaurant_name` varchar(75) DEFAULT NULL,
   `schedule` varchar(75) DEFAULT NULL,
@@ -267,8 +234,8 @@ DROP TABLE IF EXISTS `staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `staff` (
-  `staff_id` int NOT NULL AUTO_INCREMENT,
-  `person_id` int DEFAULT NULL,
+  `staff_id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) DEFAULT NULL,
   `position` varchar(75) DEFAULT NULL,
   `is_admin` varchar(1) DEFAULT 'N',
   PRIMARY KEY (`staff_id`),
@@ -296,9 +263,9 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student` (
-  `student_id` int NOT NULL AUTO_INCREMENT,
-  `person_id` int NOT NULL,
-  `graduation_year` int DEFAULT NULL,
+  `student_id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) NOT NULL,
+  `graduation_year` int(4) DEFAULT NULL,
   `major` varchar(75) DEFAULT NULL,
   `type` varchar(75) DEFAULT NULL,
   PRIMARY KEY (`student_id`),
@@ -325,7 +292,7 @@ DROP TABLE IF EXISTS `vehicle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `vehicle` (
-  `vehicle_id` int NOT NULL AUTO_INCREMENT,
+  `vehicle_id` int(11) NOT NULL AUTO_INCREMENT,
   `vehicle_plate` varchar(75) DEFAULT NULL,
   `model` varchar(75) DEFAULT NULL,
   `make` varchar(75) DEFAULT NULL,
@@ -344,6 +311,43 @@ INSERT INTO `vehicle` VALUES (1,'4333','p','Mercedes'),(2,'8289','y','BMW'),(3,'
 UNLOCK TABLES;
 
 --
+-- Dumping events for database 'niner_eats'
+--
+
+--
+-- Dumping routines for database 'niner_eats'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `add_person` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_person`(in person_name varchar(300), in email varchar(150), cellno bigint (15), person_type varchar(10))
+BEGIN
+insert into person (person_name, person_email, cell) values(person_name, email, cellno);
+if(person_type = 'student') then
+insert into student (person_id, graduation_year, major, type) values 
+((select person_id from person where cell = cellno), 2019, 'Computer Science', 'Graduate');
+elseif(person_type = 'faculty') then
+insert into faculty (person_id, title, degree_college, highest_degree) values 
+((select person_id from person where cell = cellno), 'Assistant Professor', 'UCLA', 'PhD');
+elseif(person_type = 'staff') then
+insert into student (person_id, position, is_admin) values 
+((select person_id from person where cell = cellno), 'Bus Driver', 'N');
+end if;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+-- /*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
 -- Final view structure for view `person_join`
 --
 
@@ -353,13 +357,13 @@ UNLOCK TABLES;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
 /*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+-- /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `person_join` AS select `person`.`person_id` AS `person_id`,`person`.`person_name` AS `person_name`,`person`.`person_email` AS `person_email`,`student`.`student_id` AS `student_id`,`student`.`graduation_year` AS `graduation_year` from (`person` join `student` on((`student`.`person_id` = `person`.`person_id`))) where (`student`.`major` = 'Computer Science') */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
+-- /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `person_student`
@@ -371,13 +375,13 @@ UNLOCK TABLES;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
 /*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+-- /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `person_student` AS select `a`.`person_id` AS `person_id`,`a`.`person_name` AS `person_name`,`a`.`person_email` AS `person_email`,`a`.`cell` AS `cell` from `person` `a` where `a`.`person_id` in (select `student`.`person_id` from `student` where (`student`.`graduation_year` = 2019)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
+-- /*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -385,7 +389,63 @@ UNLOCK TABLES;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-09 21:01:35
+-- Dump completed on 2019-12-02 21:16:05
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) NOT NULL,
+  `delivery_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  `driver_id` int(11) NOT NULL,
+  `restaurant_id` int(11) NOT NULL,
+  `total_price` float NOT NULL,
+  `delivery_charge` float DEFAULT NULL,
+  PRIMARY KEY (`order_id`),
+  KEY `fk_O_person_id` (`person_id`),
+  KEY `fk_O_delivery_id` (`delivery_id`),
+  KEY `fk_O_location_id` (`location_id`),
+  KEY `fk_O_driver_id` (`driver_id`),
+  KEY `fk_O_restaurant_id` (`restaurant_id`),
+  CONSTRAINT `fk_O_delivery_id` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`),
+  CONSTRAINT `fk_O_driver_id` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`),
+  CONSTRAINT `fk_O_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`),
+  CONSTRAINT `fk_O_person_id` FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`),
+  CONSTRAINT `fk_O_restaurant_id` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`restaurant_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` VALUES (1,1,1,1,1,1,15.63,6.63),(2,2,2,2,2,2,18.03,9.43),(3,3,3,3,3,3,11.91,7.42),(4,4,4,4,4,4,19.13,6.26),(5,5,5,5,5,5,13.76,6.24),(6,6,6,6,6,6,5.4,4.83),(7,7,7,7,7,7,14.05,8.57),(8,8,8,8,8,8,3.81,2.38),(9,9,9,9,1,9,17.1,6.72),(10,10,10,10,2,10,12.71,1.82),(11,11,11,11,3,11,3.9,7.26),(12,12,12,12,4,12,6.82,7.4),(13,13,13,13,5,13,4.73,7.43),(14,14,14,14,6,14,12.08,1.21),(15,15,15,15,7,15,3.83,4.77),(16,16,16,16,8,16,12.43,2.76),(17,17,17,17,1,17,6.61,4.85),(18,18,18,18,2,18,7.89,5.69),(19,19,19,19,3,19,16.54,4.88),(20,20,20,20,4,20,3.21,4.98),(21,21,21,21,5,21,5.19,4.17),(22,22,22,22,6,22,19,1.39),(23,23,23,23,7,23,14.5,3.28),(24,24,24,24,8,24,11.81,2.71),(25,25,25,25,1,25,6.83,4.85),(26,26,26,26,2,26,7.24,5.65),(27,27,27,27,3,27,10.56,1.73),(28,28,28,28,4,28,4.25,4.98),(29,29,29,29,5,29,6.68,8.66),(30,30,30,30,6,30,14.5,6.47),(31,31,31,31,7,31,14.92,9.53),(32,32,32,32,8,32,4.12,9.42),(33,33,33,33,1,33,7.02,7.99),(34,34,34,34,2,34,8.6,6.69),(35,35,35,35,3,35,8.98,4.72),(36,36,36,36,4,36,7.94,4.78),(37,37,37,37,5,37,14.8,2.13),(38,38,38,38,6,38,19.05,6.61),(39,39,39,39,7,39,12.49,5.97),(40,40,40,40,8,40,15.56,6.01),(41,41,41,41,1,41,8.85,7.06),(42,42,42,42,2,42,12.28,5.52),(43,43,43,43,3,43,9.28,9.63),(44,44,44,44,4,44,9.78,8),(45,45,45,45,5,45,12.43,5.11),(46,46,46,46,6,46,4.11,9.65),(47,47,47,47,7,47,14.29,6.65),(48,48,48,48,8,48,5.69,3.31),(49,49,49,49,1,49,12.52,6.38),(50,50,50,50,2,50,8.84,9.92),(51,51,51,51,3,51,5.69,1.5),(52,52,52,52,4,52,14.53,4.58),(53,53,53,53,5,53,10.23,3.61),(54,54,54,54,6,54,10.7,7.36),(55,55,55,55,7,55,14.03,8.66),(56,56,56,56,8,56,13.46,1.26),(57,57,57,57,1,57,13.98,8.85),(58,58,58,58,2,58,15.21,6.59),(59,59,59,59,3,59,4.6,8.25),(60,60,60,60,4,60,3.27,6.39),(61,61,61,61,5,61,9.39,2.63),(62,62,62,62,6,62,3.7,2.47),(63,63,63,63,7,63,18.49,7.01),(64,64,64,64,8,64,15.51,8.26),(65,65,65,65,1,65,6.8,9.41),(66,66,66,66,2,66,12.57,1.88),(67,67,67,67,3,67,8.69,6.21),(68,68,68,68,4,68,9.38,9.56),(69,69,69,69,5,69,18.23,3.89),(70,70,70,70,6,70,13.39,9.65),(71,71,71,71,7,71,17.71,3.01),(72,72,72,72,8,72,10.59,2.03),(73,73,73,73,1,73,6.99,9.8),(74,74,74,74,2,74,14.14,3.98),(75,75,75,75,3,75,16.73,7.27),(76,76,76,76,4,76,6.64,5.09),(77,77,77,77,5,77,16.48,1.15),(78,78,78,78,6,78,18.61,6.49),(79,79,79,79,7,79,18.66,8.19),(80,80,80,80,8,80,7.6,9.54),(81,81,81,81,1,81,16.72,4.05),(82,82,82,82,2,82,5.64,7.18),(83,83,83,83,3,83,7.39,9.14),(84,84,84,84,4,84,11.61,1.57),(85,85,85,85,5,85,16.74,8.84),(86,86,86,86,6,86,19.88,2.43),(87,87,87,87,7,87,7.52,4.32),(88,88,88,88,8,88,14.63,4.4),(89,89,89,89,1,89,19.45,9.89),(90,90,90,90,2,90,12.5,8.23),(91,91,91,91,3,91,10.34,3.69),(92,92,92,92,4,92,11.34,6.34),(93,93,93,93,5,93,15.05,8.26),(94,94,94,94,6,94,7.89,7.05),(95,95,95,95,7,95,16.69,9.19),(96,96,96,96,8,96,5.71,8.39),(97,97,97,97,1,97,16.9,9.15),(98,98,98,98,2,98,15.63,8.92),(99,99,99,99,3,99,3.71,2.53),(100,100,100,100,4,100,5.08,2.74),(101,1,2,3,4,5,6,1);
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+-- /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `order_AFTER_INSERT` AFTER INSERT ON `order` FOR EACH ROW BEGIN
+	insert into niner_eats.delivery (driver_id, vehicle_id) values(new.driver_id, 2);
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+-- /*!50003 SET collation_connection  = @saved_col_connection */ ;restaurant_ratingsdriver_rating
